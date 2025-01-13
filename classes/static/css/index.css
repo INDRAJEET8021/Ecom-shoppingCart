@@ -1,0 +1,54 @@
+/* Carousel Specific Styles */
+.carousel {
+    margin-top: 56px; /* Adjust this value to match the height of your navbar */
+    height: 365px; /* Set the desired height for the carousel */
+    overflow: hidden; /* Ensure no overflow from images */
+}
+
+.carousel-inner {
+    height: 100%; /* Make the carousel items take up the full height */
+}
+
+.carousel-item img {
+    height: 100%; /* Make the image take up the full height of the carousel */
+    width: 100%; /* Ensure the image spans the full width of the carousel */
+    object-fit: contain; /* Fit the entire image within the carousel */
+        object-position: center;; /* Maintain the aspect ratio while covering the container */
+}
+/* Responsive Carousel Heights */
+@media (max-width: 992px) {
+    .carousel {
+        height: 300px; /* Adjust height for medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel {
+        height: 250px; /* Adjust height for smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel {
+        height: 200px; /* Adjust height for extra small screens */
+    }
+}
+
+/* Control Icons and Indicators Styling */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5); /* Add some transparency to the icons */
+    border-radius: 50%; /* Make the control icons circular */
+    padding: 10px; /* Add some padding for better appearance */
+}
+
+.carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5); /* Match the indicator styling with controls */
+}
+
+.carousel-indicators .active {
+    background-color: #007bff; /* Highlight active indicator with a primary color */
+}

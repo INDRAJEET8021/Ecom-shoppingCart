@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base::Layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+<section>
+    <div class="wrapper">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="img/hc2.jpg" class="d-block w-100" alt="Slide 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/hc.jpg" class="d-block w-100" alt="Slide 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/hc3.jpg" class="d-block w-100" alt="Slide 3">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <!-- Category Section -->
+        <div class="container mt-4">
+            <p class="text-center fs-4 category-title">Category</p>
+            <div class="row text-center">
+                <div class="col-6 col-md-4 col-lg-2 mb-4 " th:each="c:${category}">
+                    <div class="card card-category shadow-sm p-3 ">
+                        <div class="card-body">
+                            <a th:href="@{'/products?category='+${c.name}}" class="text-decoration-none">
+                                <img th:src="@{/img/category_img/{imageName}(imageName=${c.imageName})}"
+                                     class="img-fluid"
+                                     alt="[[${c.name}]]">
+                                <p class=" d-block mt-2 fw-bold  text-success">
+                                    [[${c.name}]]</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Latest Products Section -->
+        <div class="container-fluid bg-light p-3">
+            <p class="text-center fs-4 latest-products-title">Latest Products</p>
+            <div class="row text-center">
+                <div class="col-6 col-md-4 col-lg-3 mb-4" th:each="p:${products}">
+                    <div class="card card-product shadow-sm">
+                        <a th:href="@{'/product/'+${p.id}}" class="text-decoration-none">
+                            <div class="image-container">
+                                <img th:src="@{/img/product_img/{imageName}(imageName=${p.image})}" class="img-fluid"
+                                     alt="[[${p.title}]]">
+                                <th:block th:if="${user!=null}">
+
+                                    <i class="fa-solid fa-heart wishlist-icon"
+                                       th:attr="data-product-id=${p.id}"
+                                       th:onclick="'toggleWishlist(event, ' + ${p.id} + ', this)'"></i>
+
+                                </th:block>
+                                <th:block th:if="${user==null}">
+                                    <a href="/signin">
+                                        <i class="fa-solid fa-heart wishlist-icon"></i></a>
+                                </th:block>
+                            </div>
+                            <p class="text-center mt-2 text-secondary fs-5">[[${p.title}]]</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Carousel -->
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+
+</body>
+</html>
