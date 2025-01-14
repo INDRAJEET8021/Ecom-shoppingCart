@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base::Layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section>
+    <div class="container p-5">
+        <p class="text-center fs-3 mt-4">Admin DashBoard</p>
+        <div class="row p-5">
+            <div class="col-md-4 mt-2">
+                <a href="/admin/loadAddProduct" class="text-decoration-none">
+                    <div class="card card-sh" style="box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);">
+                        <div class="card-body text-center text-primary">
+                            <i class="fa-solid fa-square-plus fa-3x "></i>
+                            <p class="fs-5">Add product</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+            <div class="col-md-4 mt-2">
+                <a href="/admin/category" class="text-decoration-none">
+                    <div class="card card-sh" style="box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);">
+                        <div class="card-body text-center text-primary">
+                            <i class="fa-solid fa-right-to-bracket fa-3x"></i>
+                            <p class="fs-5">Add Category</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+            <div class="col-md-4 mt-2">
+                <a href="/admin/ViewProducts" class="text-decoration-none">
+                    <div class="card card-sh" style="box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);">
+                        <div class="card-body text-center text-danger">
+                            <i class="fa-solid fa-book fa-3x"></i>
+                            <p class="fs-5">View product</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+            <div class="col-md-4 mt-4">
+                <a href="/admin/orders" class="text-decoration-none">
+                    <div class="card card-sh" style="box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);">
+                        <div class="card-body text-center text-warning">
+                            <i class="fa-solid fa-box-open fa-3x"></i>
+                            <p class="fs-5">Orders</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+            <div class="col-md-4 mt-4">
+                <a href="/admin/users?type=1" class="text-decoration-none">
+                    <div class="card card-sh" style="box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);">
+                        <div class="card-body text-center text-primary">
+                            <i class="fa-solid fa-circle-user fa-3x"></i>
+                            <p class="fs-5">Users</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+            <div class="col-md-4 mt-4">
+                <a href="/admin/add-admin" class="text-decoration-none">
+                    <div class="card card-sh" style="box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);">
+                        <div class="card-body text-center text-primary">
+                            <i class="fa-solid fa-user-plus fa-3x"></i>
+                            <p class="fs-5">Add Admin</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+
+            <div class="col-md-4 mt-4">
+                <a href="/admin/users?type=2" class="text-decoration-none">
+                    <div class="card card-sh" style="box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);">
+                        <div class="card-body text-center text-primary">
+                            <i class="fa-solid fa-circle-user fa-3x"></i>
+                            <p class="fs-5">Admins</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

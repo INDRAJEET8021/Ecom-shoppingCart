@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base::Layout(~{::section})}">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Checkout Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<section>
+    <div class="container-fluid mt-5 p-5 bg-light">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <p class="fs-3 text-center">My Profile</p>
+                <th:block th:if="${session.succMsg}">
+                    <p class="text-success fw-bold text-center">[[${session.succMsg}]]</p>
+                    <th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+                </th:block>
+
+                <th:block th:if="${session.errorMsg}">
+                    <p class="text-danger fw-bold text-center">[[${session.errorMsg}]]</p>
+                    <th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+                </th:block>
+                <hr>
+                <div class="text-center">
+                    <!--                    @{/img/profile_img/{imageName}(imageName=-->
+                    <img th:src="${user.profileImage}" class="border p-2"
+                         style="width:110px;height:110px;border-radius:50%;">
+                </div>
+                <div class="col-md-8 offset-md-2 mt-4">
+                    <table class="table table-borderless">
+                        <tbody>
+                        <form action="/user/update-profile" method="post" enctype="multipart/form-data">
+                            <tr>
+                                <th scope="row"><i class="fas fa-user"></i> Name</th>
+                                <td>:</td>
+                                <td><input type="text" name="name" class="form-control" th:value="${user.name}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><i class="fas fa-mobile-alt"></i> Mobile Number</th>
+                                <td>:</td>
+                                <td><input type="text" name="mobileNumber" class="form-control"
+                                           th:value="${user.mobileNumber}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><i class="fas fa-envelope"></i> Email</th>
+                                <td>:</td>
+                                <td><input type="text" name="email" class="form-control"
+                                           th:value="${user.email}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><i class="fas fa-home"></i> Address</th>
+                                <td>:</td>
+                                <td><input type="text" name="address" class="form-control"
+                                           th:value="${user.address}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><i class="fas fa-city"></i> City</th>
+                                <td>:</td>
+                                <td><input type="text" name="city" class="form-control" th:value="${user.city}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><i class="fas fa-map-marker-alt"></i> State</th>
+                                <td>:</td>
+                                <td><input type="text" name="state" class="form-control" th:value="${user.state}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><i class="fas fa-location-pin"></i> Pincode</th>
+                                <td>:</td>
+                                <td><input type="text" name="pincode" class="form-control" th:value="${user.pincode}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><i class="fas fa-image"></i> Image</th>
+                                <td>:</td>
+                                <td><input type="file" name="img" class="form-control" value=" ">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><i class="fas fa-user-tag"></i> Role</th>
+                                <td>:</td>
+                                <td><input type="text" name="" class="form-control" th:value="${user.role}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><i class="fas fa-shield-alt"></i> Account Status</th>
+
+                                <td>:</td>
+                                <td><input type="text" name="" class="form-control" th:value="${user.isEnable}">
+                                    <input type="hidden" th:value="${user.id}" name="id">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td class="text-center">
+                                    <button class="btn btn-md btn-primary text-light px-4">Update!</button>
+                                </td>
+                            </tr>
+                        </form>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <hr>
+            <div class="col-md-10 offset-md-1 mt-1">
+                <div class="row">
+                    <p class="text-center fs-3">Change Password</p>
+                    <div class="col-md-6 offset-md-3">
+                        <table class="table table-borderless">
+                            <tbody>
+                            <form action="/user/change-password" method="post">
+                                <tr>
+                                    <th scope="row"><i class="fas fa-lock"></i> Current Password</th>
+                                    <td><input type="password" name="currentPassword" class="form-control"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><i class="fas fa-key"></i> New Password</th>
+                                    <td><input type="password" name="newPassword" class="form-control"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><i class="fas fa-key"></i> Confirm Password</th>
+                                    <td><input type="password" name="" class="form-control"></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="text-center">
+                                        <button class="btn btn-md btn-success text-light px-4">Change Now!</button>
+                                    </td>
+                                </tr>
+                            </form>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+</body>
+</html>

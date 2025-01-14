@@ -1,0 +1,214 @@
+.card-sh{
+box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);
+}
+.cat-div{
+	box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+}
+
+.error{
+color:red;
+}
+
+     /* Custom styles */
+            .carousel-item img {
+                height: 450px;
+                object-fit: cover;
+            }
+
+            .category-title, .latest-products-title {
+                font-weight: bold;
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+
+            .card-category {
+                border-radius: 50%;
+                overflow: hidden;
+                position: relative;
+                transition: transform 0.3s, box-shadow 0.3s;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            .card-category img {
+                border-radius: 50%;
+                transition: transform 0.3s;
+                height: 150px;
+                width: 150px;
+            }
+
+            .card-category:hover {
+                transform: scale(1.05);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            }
+
+            .card-product {
+                transition: transform 0.3s, box-shadow 0.3s;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            .card-product img {
+                border-radius: 10px;
+                transition: transform 0.3s;
+                height: 200px;
+                width: 100%;
+                object-fit: cover;
+            }
+
+            .card-product:hover {
+                transform: scale(1.05);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            }
+
+            .featured-banner {
+                background: url('img/featured-banner.jpg') no-repeat center center;
+                background-size: cover;
+                color: white;
+                padding: 50px 0;
+                text-align: center;
+                margin-top: 20px;
+                border-radius: 10px;
+            }
+
+            .featured-banner h2 {
+                font-size: 2.5rem;
+                font-weight: bold;
+            }
+
+            .featured-banner p {
+                font-size: 1.2rem;
+            }
+
+            .category-carousel img {
+                height: 300px;
+                width: 100%;
+                object-fit: cover;
+            }
+
+            @media (max-width: 768px) {
+                .carousel-item img {
+                    height: 300px;
+                }
+
+                .category-title, .latest-products-title {
+                    font-size: 1.5rem;
+                }
+
+                .card-category img, .card-product img {
+                    height: auto;
+                    width: 100%;
+                }
+            }
+
+            @media (max-width: 576px) {
+                .featured-banner h2 {
+                    font-size: 2rem;
+                }
+
+                .featured-banner p {
+                    font-size: 1rem;
+                }
+            }
+
+
+
+
+
+/* Ensure card takes full width within column */
+.card-product {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Container to maintain aspect ratio */
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 75%; /* 4:3 Aspect Ratio (height / width * 100) */
+    background: #f8f9fa; /* Light background for cases where image is not loaded */
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+/* Make image cover container while preserving aspect ratio */
+.image-container img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+}
+
+/* Style the card */
+.card-product a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.card-product p {
+    margin: 0;
+    font-weight: bold;
+    color: #6c757d;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .image-container {
+        padding-bottom: 100%; /* Square aspect ratio for smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .card-product p {
+        font-size: 1rem;
+    }
+}
+
+
+   .image-container {
+              position: relative;
+              cursor: url('https://cdn-icons-png.flaticon.com/512/1828/1828919.png'), auto; /* Custom plus cursor */
+          }
+          .image-container:hover {
+              cursor: zoom-in; /* Plus cursor when hovering over the product */
+          }
+          .wishlist-icon {
+              position: absolute;
+              top: 10px;
+              right: 10px;
+              color: #ccc;
+              font-size: 24px;
+              cursor: pointer;
+              transition: color 0.3s ease;
+
+          }
+          .wishlist-icon.active {
+              color: red; /* Icon color changes to red when clicked */
+              animation: heartbeat 0.8s ease forwards;
+
+          }
+                @keyframes heartbeat {
+                        0% {
+                            transform: scale(1);
+                        }
+                        20% {
+                            transform: scale(1.3);
+                        }
+                        40% {
+                            transform: scale(1);
+                        }
+                        60% {
+                            transform: scale(1.3);
+                        }
+                        80% {
+                            transform: scale(1);
+                        }
+                        100% {
+                            transform: scale(1);
+                        }
+                    }

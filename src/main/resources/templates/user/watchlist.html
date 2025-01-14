@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base::Layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Watchlist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<section>
+    <div class="container-fluid mt-5 p-5">
+        <div class="card" style="box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3)">
+            <div class="card-header text-center">
+                <p class="fs-4">Wishlist Details</p>
+                <th:block th:if="${session.succMsg}">
+                    <p class="text-success fw-bold text-center">[[${session.succMsg}]]</p>
+                    <th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+                </th:block>
+
+                <th:block th:if="${session.errorMsg}">
+                    <p class="text-danger fw-bold text-center">[[${session.errorMsg}]]</p>
+                    <th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+                </th:block>
+            </div>
+
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Sl No.</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Loop through wishlistProducts and display them -->
+                    <th:block th:each="product, iterStat : ${wishlistProducts}">
+                        <tr>
+                            <th scope="row" th:text="${iterStat.index + 1}"></th>
+                            <!--                            @{/img/product_img/{imageName}(imageName=${product.image})}-->
+                            <td><img th:src="${product.image}" width="70px"
+                                     height="70px" alt="Product Image"></td>
+                            <td th:text="${product.title}"></td>
+                            <td th:text="${product.price}"></td>
+                            <td th:text="${product.isActive} ? 'Active' : 'Inactive'"></td>
+                            <td>
+                                <a th:href="@{'/product/'+${product.id}}" class="btn btn-info">View</a>
+                                <!--                                th:href="@{'/product/' + ${product.id}}"-->
+                                <a th:href="@{'/user/remove?productId=' + ${product.id}}"
+                                   class="btn btn-danger text-light">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </th:block>
+
+                    <!-- If no products in the wishlist -->
+                    <th:block th:unless="${wishlistProducts}">
+                        <tr>
+                            <td colspan="6" class="text-center">Your watchlist is empty.</td>
+                        </tr>
+                    </th:block>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
